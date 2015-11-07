@@ -4,6 +4,11 @@ dependencies:
         - sudo dpkg --install atom-amd64.deb || true
         - sudo apt-get -f install
         - apm install
+
+machine:
+  timezone:
+    Asia/Tokyo
+
 test:
   override:
     - apm test
