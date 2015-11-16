@@ -15,6 +15,9 @@ describe "TimeConverter", ->
     it "output correct datetime string", ->
       expect(time_converter.toString()).toEqual(date_string)
 
+    it "output correct datetime string by convert()", ->
+      expect(time_converter.convert()).toEqual(date_string)
+
   describe "when build by date string", ->
     beforeEach ->
       time_converter = new TimeConverter.TimeConverter(date_string)
@@ -24,3 +27,6 @@ describe "TimeConverter", ->
 
     it "output correct unixtime", ->
       expect(time_converter.toUnixtime()).toEqual(unixtime)
+
+    it "output correct unixtime by convert()", ->
+      expect(time_converter.convert()).toEqual(unixtime)
