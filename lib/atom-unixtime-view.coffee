@@ -1,3 +1,5 @@
+TimeConverter = require '../lib/time-converter'
+
 module.exports =
 class AtomUnixtimeView
   constructor: (serializedState) ->
@@ -7,16 +9,22 @@ class AtomUnixtimeView
 
     # Create message element
     message = document.createElement('div')
-    message.textContent = "The AtomUnixtime package is Alive! It's ALIVE!"
     message.classList.add('message')
     @element.appendChild(message)
+
+    @timeConverter = null
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
 
-  # Tear down any state and detach
+  # TEAR DOWN ANY STATE AND DETACH
   destroy: ->
     @element.remove()
 
   getElement: ->
     @element
+
+  setTime: (unixtime_or_string) ->
+    @timeConverter = new TimeConverter.TimeConverter(unixtime_or_string)
+    converted_time = @timeConverter.convert()
+    @element.textContent = "#{unixtime_or_string} => #{converted_time}"

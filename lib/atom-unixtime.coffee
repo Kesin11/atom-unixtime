@@ -15,6 +15,9 @@ module.exports = AtomUnixtime =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:convert_time': => @convert_time()
+
+    @editor = atom.workspace.getActiveTextEditor()
 
   deactivate: ->
     @modalPanel.destroy()
@@ -25,9 +28,11 @@ module.exports = AtomUnixtime =
     atomUnixtimeViewState: @atomUnixtimeView.serialize()
 
   toggle: ->
-    console.log 'AtomUnixtime was toggled!'
-
     if @modalPanel.isVisible()
       @modalPanel.hide()
     else
       @modalPanel.show()
+
+  convert_time: ->
+    @atomUnixtimeView.setTime(@editor?.getSelectedText())
+    @toggle()

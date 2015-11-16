@@ -7,12 +7,12 @@ AtomUnixtime = require '../lib/atom-unixtime'
 
 describe "AtomUnixtime", ->
   [workspaceElement, activationPromise] = []
-
   beforeEach ->
     workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('atom-unixtime')
 
-  describe "when the atom-unixtime:toggle event is triggered", ->
+  describe "when the atom-unixtime:convert_time event is triggered", ->
+
     it "hides and shows the modal panel", ->
       # Before the activation event the view is not on the DOM, and no panel
       # has been created
@@ -20,7 +20,7 @@ describe "AtomUnixtime", ->
 
       # This is an activation event, triggering it will cause the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'atom-unixtime:toggle'
+      atom.commands.dispatch workspaceElement, 'atom-unixtime:convert_time'
 
       waitsForPromise ->
         activationPromise
@@ -33,10 +33,8 @@ describe "AtomUnixtime", ->
 
         atomUnixtimePanel = atom.workspace.panelForItem(atomUnixtimeElement)
         expect(atomUnixtimePanel.isVisible()).toBe true
-        atom.commands.dispatch workspaceElement, 'atom-unixtime:toggle'
-        expect(atomUnixtimePanel.isVisible()).toBe false
 
-    it "hides and shows the view", ->
+    it "shows the view", ->
       # This test shows you an integration test testing at the view level.
 
       # Attaching the workspaceElement to the DOM is required to allow the
@@ -49,7 +47,7 @@ describe "AtomUnixtime", ->
 
       # This is an activation event, triggering it causes the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'atom-unixtime:toggle'
+      atom.commands.dispatch workspaceElement, 'atom-unixtime:convert_time'
 
       waitsForPromise ->
         activationPromise
@@ -58,5 +56,3 @@ describe "AtomUnixtime", ->
         # Now we can test for view visibility
         atomUnixtimeElement = workspaceElement.querySelector('.atom-unixtime')
         expect(atomUnixtimeElement).toBeVisible()
-        atom.commands.dispatch workspaceElement, 'atom-unixtime:toggle'
-        expect(atomUnixtimeElement).not.toBeVisible()

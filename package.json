@@ -5,7 +5,7 @@
   "description": "A short description of your package",
   "keywords": [],
   "activationCommands": {
-    "atom-workspace": "atom-unixtime:toggle"
+    "atom-workspace": "atom-unixtime:convert_time"
   },
   "repository": "https://github.com/atom/atom-unixtime",
   "license": "MIT",
