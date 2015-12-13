@@ -13,6 +13,7 @@ module.exports = AtomUnixtime =
 
     @inputPanelView = new InputPanelView()
     @inputPanel = atom.workspace.addBottomPanel(item: @inputPanelView, visible:false)
+    @inputPanelView.setPanel(@inputPanel)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -30,6 +31,7 @@ module.exports = AtomUnixtime =
     @modalPanel.destroy()
     @subscriptions.dispose()
     @atomUnixtimeView.destroy()
+    @inputPanelView.destory()
 
   serialize: ->
     atomUnixtimeViewState: @atomUnixtimeView.serialize()
@@ -45,5 +47,4 @@ module.exports = AtomUnixtime =
     @toggle()
 
   input_time: ->
-    @inputPanelView.setPanel(@inputPanel)
     @inputPanel.show()
