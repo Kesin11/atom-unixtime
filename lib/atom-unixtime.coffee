@@ -31,7 +31,7 @@ module.exports = AtomUnixtime =
     @modalPanel.destroy()
     @subscriptions.dispose()
     @atomUnixtimeView.destroy()
-    @inputPanelView.destory()
+    @inputPanelView.destroy()
 
   serialize: ->
     atomUnixtimeViewState: @atomUnixtimeView.serialize()

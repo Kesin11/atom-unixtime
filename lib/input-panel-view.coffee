@@ -11,26 +11,29 @@ class InputPanelView extends View
   initialize: ->
     @subscriptions = new CompositeDisposable
 
-    # イベントを登録する
-    # 表示したときにフォーカス、閉じたらエディタにフォーカス
+  # bind events
   setPanel: (@panel) =>
+    # focus
     @subscriptions.add @panel.onDidChangeVisible (visible) =>
       if visible
         @focusMiniEditor()
       else
         atom.views.getView(atom.workspace).focus()
 
-    @subscriptions.add atom.commands.add @element,
+    # bind function to atom events
+    @subscriptions.add atom.commands.add @miniEditor.element,
       'core:close': => @panel?.hide()
       'core:cancel': => @panel?.hide()
+      'core:confirm': => @confirm()
 
   focusMiniEditor: =>
     @miniEditor.focus()
 
-  onConfirm: ->
+  confirm: ->
     alert(@miniEditor.getText())
+    @panel?.hide()
 
   # TEAR DOWN ANY STATE AND DETACH
   destroy: ->
     @subscriptions?.dispose()
-    @div.remove()
+    @panel.destroy()
