@@ -20,9 +20,9 @@ module.exports = AtomUnixtime =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:toggle': => @toggle()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:convert_time': =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Show converted time': =>
       @convert_time()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:input_time': =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Insert converted time': =>
       @input_time()
 
     @editor = atom.workspace.getActiveTextEditor()
