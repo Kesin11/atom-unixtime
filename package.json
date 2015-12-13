@@ -5,7 +5,8 @@
   "description": "A short description of your package",
   "keywords": [],
   "activationCommands": {
-    "atom-workspace": "atom-unixtime:convert_time"
+    "atom-workspace": "atom-unixtime:convert_time",
+    "atom-workspace": "atom-unixtime:input_time"
   },
   "repository": "https://github.com/atom/atom-unixtime",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-space-pen-views": "^2.1.0",
     "moment": "^2.10.6"
   }
 }
