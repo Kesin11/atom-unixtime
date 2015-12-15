@@ -11,7 +11,7 @@ describe "AtomUnixtime", ->
     workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('atom-unixtime')
 
-  describe "when the atom-unixtime:Show converted time event is triggered", ->
+  describe "when the 'atom-unixtime:Show converted time' event is triggered", ->
 
     it "hides and shows the modal panel", ->
       # Before the activation event the view is not on the DOM, and no panel

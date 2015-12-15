@@ -5,7 +5,7 @@ TimeConverter = require '../lib/time-converter'
 module.exports =
 class InputPanelView extends View
   @content: ->
-    @div =>
+    @div class: 'input-block', =>
       @div "Input Date or Timestamp"
       @subview 'miniEditor', new TextEditorView(mini: true, placeholderText: 'YYYY-MM-DD HH:mm:ss or timestamp')
 
