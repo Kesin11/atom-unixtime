@@ -19,8 +19,7 @@ module.exports = AtomUnixtime =
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
-    # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:toggle': => @toggle()
+    # Register commands
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Show converted time': =>
       @convert_time()
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Insert converted time': =>
@@ -36,12 +35,6 @@ module.exports = AtomUnixtime =
 
   serialize: ->
     atomUnixtimeViewState: @atomUnixtimeView.serialize()
-
-  toggle: ->
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
-    else
-      @modalPanel.show()
 
   convert_time: ->
     unixtime_or_string = @editor?.getSelectedText()
