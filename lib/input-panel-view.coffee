@@ -47,5 +47,5 @@ class InputPanelView extends View
   insertConvertedTime: (unixtime_or_string) ->
     textEditor = atom.workspace.getActiveTextEditor()
     @timeConverter = new TimeConverter.TimeConverter(unixtime_or_string)
-    string = new String(@timeConverter.convert())
-    textEditor.insertText(string, autoIndent: true, autoIndentNewline: true)
+    converted_text = @timeConverter.convert()
+    textEditor.insertText(converted_text.toString(), autoIndent: true, autoIndentNewline: true)
