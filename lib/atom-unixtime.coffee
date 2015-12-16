@@ -1,6 +1,7 @@
 AtomUnixtimeView = require './atom-unixtime-view'
 InputPanelView = require './input-panel-view.coffee'
-{CompositeDisposable} = require 'atom'
+{CompositeDisposable, Notification} = require 'atom'
+{TimeConverter} = require '../lib/time-converter'
 
 module.exports = AtomUnixtime =
   atomUnixtimeView: null
@@ -43,8 +44,12 @@ module.exports = AtomUnixtime =
       @modalPanel.show()
 
   convert_time: ->
-    @atomUnixtimeView.setTime(@editor?.getSelectedText())
-    @toggle()
+    unixtime_or_string = @editor?.getSelectedText()
+    @timeConverter = new TimeConverter(unixtime_or_string)
+    converted_text = @timeConverter.convert()
+
+    return atom.notifications.addInfo(converted_text.toString()) if converted_text
+    return atom.notifications.addError("Cannot convert '#{unixtime_or_string}'. Please select unixtime_or_string")
 
   input_time: ->
     @inputPanel.show()
