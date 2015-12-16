@@ -1,17 +1,12 @@
-AtomUnixtimeView = require './atom-unixtime-view'
 InputPanelView = require './input-panel-view.coffee'
 {CompositeDisposable, Notification} = require 'atom'
 {TimeConverter} = require '../lib/time-converter'
 
 module.exports = AtomUnixtime =
-  atomUnixtimeView: null
   modalPanel: null
   subscriptions: null
 
   activate: (state) ->
-    @atomUnixtimeView = new AtomUnixtimeView(state.atomUnixtimeViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @atomUnixtimeView.getElement(), visible: false)
-
     @inputPanelView = new InputPanelView()
     @inputPanel = atom.workspace.addBottomPanel(item: @inputPanelView, visible:false)
     @inputPanelView.setPanel(@inputPanel)
@@ -28,13 +23,10 @@ module.exports = AtomUnixtime =
     @editor = atom.workspace.getActiveTextEditor()
 
   deactivate: ->
-    @modalPanel.destroy()
     @subscriptions.dispose()
-    @atomUnixtimeView.destroy()
     @inputPanelView.destroy()
 
   serialize: ->
-    atomUnixtimeViewState: @atomUnixtimeView.serialize()
 
   convert_time: ->
     unixtime_or_string = @editor?.getSelectedText()
