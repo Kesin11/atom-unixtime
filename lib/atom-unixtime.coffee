@@ -15,9 +15,9 @@ module.exports = AtomUnixtime =
     @subscriptions = new CompositeDisposable
 
     # Register commands
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Show converted time': =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:show': =>
       @convert_time()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:Insert converted time': =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-unixtime:insert': =>
       @input_time()
 
     @editor = atom.workspace.getActiveTextEditor()

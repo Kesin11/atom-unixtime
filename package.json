@@ -6,8 +6,8 @@
   "keywords": [],
   "activationCommands": {
     "atom-workspace": [
-      "atom-unixtime:Show converted time",
-      "atom-unixtime:Insert converted time"
+      "atom-unixtime:show",
+      "atom-unixtime:insert"
     ]
   },
   "repository": "https://github.com/atom/atom-unixtime",

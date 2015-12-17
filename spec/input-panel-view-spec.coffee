@@ -20,10 +20,10 @@ describe "InputPanelView", ->
     # Before the activation event the view is not on the DOM
     expect(workspaceElement.querySelector('.input-block')).not.toExist()
 
-  describe "when the 'atom-unixtime:Insert converted time' event is triggered", ->
+  describe "when the 'atom-unixtime:insert' event is triggered", ->
     beforeEach ->
       # activate
-      atom.commands.dispatch workspaceElement, 'atom-unixtime:Insert converted time'
+      atom.commands.dispatch workspaceElement, 'atom-unixtime:insert'
 
       waitsForPromise ->
         activationPromise

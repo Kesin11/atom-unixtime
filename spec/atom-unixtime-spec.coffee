@@ -11,6 +11,6 @@ describe "AtomUnixtime", ->
     workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('atom-unixtime')
 
-  describe "when the 'atom-unixtime:Show converted time' event is triggered", ->
+  describe "when the 'atom-unixtime:show' event is triggered", ->
     it "should be notify notification", ->
       # add test for notification maybe
