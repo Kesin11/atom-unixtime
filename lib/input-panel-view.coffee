@@ -1,6 +1,6 @@
 {View, TextEditorView} = require 'atom-space-pen-views'
 {CompositeDisposable} = require 'atom'
-TimeConverter = require '../lib/time-converter'
+{TimeConverter} = require '../lib/time-converter'
 
 module.exports =
 class InputPanelView extends View
@@ -46,6 +46,6 @@ class InputPanelView extends View
 
   insertConvertedTime: (unixtime_or_string) ->
     textEditor = atom.workspace.getActiveTextEditor()
-    @timeConverter = new TimeConverter.TimeConverter(unixtime_or_string)
+    @timeConverter = new TimeConverter(unixtime_or_string)
     converted_text = @timeConverter.convert()
     textEditor.insertText(converted_text.toString(), autoIndent: true, autoIndentNewline: true)
