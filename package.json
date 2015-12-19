@@ -2,7 +2,7 @@
   "name": "atom-unixtime",
   "main": "./lib/atom-unixtime",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Convert unixtime <-> date string",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": [
@@ -10,7 +10,7 @@
       "atom-unixtime:insert"
     ]
   },
-  "repository": "https://github.com/atom/atom-unixtime",
+  "repository": "https://github.com/Kesin11/atom-unixtime",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
