@@ -1,7 +1,7 @@
 {
   "name": "atom-unixtime",
   "main": "./lib/atom-unixtime",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Convert unixtime <-> date string",
   "keywords": [],
   "activationCommands": {
